@@ -2,14 +2,31 @@
 
 # import the modules you need here
 import argparse
+import pandas as pd
+import os
+import glob
+
 
 def read_tidal_data(filename):
-
-    return 0
+    tide_data=pd.read_csv(r"w2k\user\nkj513\(H:)\SEpwC_tidal_assessment\data\Aberdeen,sep='\t'")
+    all_files = glob.glob(
+        f"{r'w2k\user\nkj513\(H:)\SEpwC_tidal_assessment\data\Aberdeen'}/*.csv"
+        )
+    list_of_dataframes = []
+    
+    for filename in all_files:
+        try: 
+            df=pd.read_txt(filename,sep='\t')
+            list_of_dataframes.append(df)
+            print(f"Successfully read: {filename}")
+        except Exception as e:
+            print (f"Error reading {filename}: {e}")
+            
+            return list_of_dataframes
+        
     
 def extract_single_year_remove_mean(year, data):
-   
-
+    
     return 
 
 
